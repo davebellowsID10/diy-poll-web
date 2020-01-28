@@ -18,95 +18,95 @@ export class SurveyPage extends Component {
     super(props);
 
     const json = `{
-      "pages": [
-       {
-        "name": "page1",
-        "elements": [
-         {
-          "type": "radiogroup",
-          "name": "favoriteFlavor",
-          "title": "Pick your favorite flavor",
-          "isRequired": true,
-          "choices": [
-           {
-            "value": "MB Big Watermelon",
-            "text": "MB Big Watermelon"
-           },
-           {
-            "value": "FLV Wild Melon",
-            "text": "FLV Wild Melon"
-           },
-           {
-            "value": "Cap Double Watermelon",
-            "text": "Cap Double Watermelon"
-           },
-           {
-            "value": "DIYFS Maniacal Melon",
-            "text": "DIYFS Maniacal Melon"
-           },
-           {
-            "value": "PUR Melon Patch",
-            "text": "PUR Melon Patch"
-           },
-           {
-            "value": "Something Else",
-            "text": "Something Else"
-           }
-          ]
-         }
-        ]
-       }
-      ],
-      "cookieName": "fotw-2020-01-26"
-     }`;
-
-    this.css = {
-      radiogroup: {
-        root: 'form-group',
-        controlLabel: 'form-check-label',
-        item: 'form-check',
-        itemControl: 'form-check-input',
-        error: {
-          root: 'alert alert-danger'
-        }
+   {
+ "pages": [
+  {
+   "name": "page1",
+   "elements": [
+    {
+     "type": "radiogroup",
+     "name": "Squestion1",
+     "title": "Pick your favorite Cherry flavor",
+     "isRequired": true,
+     "hasOther": true,
+     "choices": [
+      {
+       "value": "item1",
+       "text": "TFA Cherry Extract"
       },
-      navigationButton: 'btn btn-success mt-2'
-    };
-    this.model = new Survey.Model(json);
-    this.onComplete = this.onComplete.bind(this);
-  }
-
-  onComplete(model) {
-    const { actions } = this.props;
-    const { isCompleted, cookieName, valuesHash } = model;
-
-    if (!isCompleted || !valuesHash) {
-      return;
+      {
+       "value": "item2",
+       "text": "WF Black Cherry Jelly Bean"
+      },
+      {
+       "value": "item3",
+       "text": "FLV Black Cherry"
+      },
+      {
+       "value": "item16",
+       "text": "INW Black Cherry For Pipe"
+      },
+      {
+       "value": "item4",
+       "text": "INW Cherries"
+      },
+      {
+       "value": "item13",
+       "text": "FA Cherry"
+      },
+      {
+       "value": "item5",
+       "text": "FA Black Cherry"
+      },
+      {
+       "value": "item8",
+       "text": "TFA Black Cherry"
+      },
+      {
+       "value": "item6",
+       "text": "FW Cherry Crush"
+      },
+      {
+       "value": "item14",
+       "text": "FW Cherry Berry"
+      },
+      {
+       "value": "item7",
+       "text": "MB Red Cherry"
+      },
+      {
+       "value": "item10",
+       "text": "FLV Cherry Filling"
+      },
+      {
+       "value": "item11",
+       "text": "FLV Cherry Blossom"
+      },
+      {
+       "value": "item12",
+       "text": "TFA Cherry Blossom"
+      },
+      {
+       "value": "item15",
+       "text": "CAP Tart Cherry"
+      },
+      {
+       "value": "item17",
+       "text": "TFA Maraschino Cherry"
+      },
+      {
+       "value": "item9",
+       "text": "FLV Rainier Cherry"
+      },
+      {
+       "value": "item18",
+       "text": "FLV Cherry Filling"
+      }
+     ],
+     "otherText": "Something Else"
     }
-
-    actions.submitSurvey(cookieName, valuesHash);
+   ]
   }
-
-  render() {
-    return (
-      <Container>
-        <Row>
-          <Col>
-            <h1>Take Survey</h1>
-            <Survey.Survey
-              css={this.css}
-              model={this.model}
-              onComplete={this.onComplete}
-            />
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+ ],
+ "cookieName": "fotw-2020-01-28"
 }
-
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(appActions, dispatch)
-});
-
-export default connect(null, mapDispatchToProps)(SurveyPage);
